@@ -1,4 +1,5 @@
 ---
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 const year = new Date().getFullYear();
 ---
 
@@ -6,10 +7,10 @@ const year = new Date().getFullYear();
   <div class="footer-inner container">
 
     <div class="footer-brand">
-      <a href="/" aria-label="Samir Akkawi Jewelry — Home">
+      <a href={base} aria-label="Samir Akkawi Jewelry — Home">
         <div class="footer-logo-badge">
           <img
-            src="/assets/images/brand/akkawi-logo-3.jpg"
+            src={`${base}assets/images/brand/akkawi-logo-3.jpg`}
             alt="Akkawi Jewelry logo"
             width="56"
             height="56"
@@ -49,12 +50,12 @@ const year = new Date().getFullYear();
     <nav class="footer-nav" aria-label="Footer navigation">
       <p class="footer-nav-heading" data-en="Navigate" data-ar="تصفح">Navigate</p>
       <ul>
-        <li><a href="/"><span data-en="Home" data-ar="الرئيسية">Home</span></a></li>
-        <li><a href="/collections"><span data-en="Collections" data-ar="المجموعات">Collections</span></a></li>
-        <li><a href="/about"><span data-en="About" data-ar="من نحن">About</span></a></li>
-        <li><a href="/services"><span data-en="Services" data-ar="خدماتنا">Services</span></a></li>
-        <li><a href="/policies"><span data-en="Policies" data-ar="السياسات">Policies</span></a></li>
-        <li><a href="/contact"><span data-en="Contact" data-ar="تواصل معنا">Contact</span></a></li>
+        <li><a href={base}><span data-en="Home" data-ar="الرئيسية">Home</span></a></li>
+        <li><a href={`${base}collections`}><span data-en="Collections" data-ar="المجموعات">Collections</span></a></li>
+        <li><a href={`${base}about`}><span data-en="About" data-ar="من نحن">About</span></a></li>
+        <li><a href={`${base}services`}><span data-en="Services" data-ar="خدماتنا">Services</span></a></li>
+        <li><a href={`${base}policies`}><span data-en="Policies" data-ar="السياسات">Policies</span></a></li>
+        <li><a href={`${base}contact`}><span data-en="Contact" data-ar="تواصل معنا">Contact</span></a></li>
       </ul>
     </nav>
 

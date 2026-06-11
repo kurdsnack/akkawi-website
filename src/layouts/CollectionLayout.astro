@@ -13,9 +13,10 @@ interface Props {
 }
 
 const { title, description, collection, category, arCategory, intro, arIntro, products } = Astro.props;
+const base              = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 const collectionLabel   = collection === 'diamond' ? 'Diamond' : 'Gold';
 const arCollectionLabel = collection === 'diamond' ? 'الماس' : 'الذهب';
-const collectionHref    = `/collections/${collection}`;
+const collectionHref    = `${base}collections/${collection}`;
 ---
 
 <BaseLayout title={title} description={description}>
@@ -23,7 +24,7 @@ const collectionHref    = `/collections/${collection}`;
   <section class="page-header">
     <div class="container">
       <nav class="breadcrumb" aria-label="Breadcrumb">
-        <a href="/collections" data-en="Collections" data-ar="المجموعات">Collections</a>
+        <a href={`${base}collections`} data-en="Collections" data-ar="المجموعات">Collections</a>
         <span aria-hidden="true">/</span>
         <a href={collectionHref} data-en={collectionLabel} data-ar={arCollectionLabel}>{collectionLabel}</a>
         <span aria-hidden="true">/</span>
@@ -58,7 +59,7 @@ const collectionHref    = `/collections/${collection}`;
         <p>
           <span data-en="Pricing is not displayed online — all pieces are priced at current market value. Visit us in store or "
                 data-ar="الأسعار غير معروضة على الإنترنت — تُسعَّر جميع القطع بالقيمة السوقية الحالية. زرنا في المتجر أو ">Pricing is not displayed online — all pieces are priced at current market value.
-            Visit us in store or </span><a href="/contact" data-en="get in touch" data-ar="تواصل معنا">get in touch</a><span data-en=" to enquire about a specific piece." data-ar=" للاستفسار عن قطعة محددة."> to enquire about a specific piece.</span>
+            Visit us in store or </span><a href={`${base}contact`} data-en="get in touch" data-ar="تواصل معنا">get in touch</a><span data-en=" to enquire about a specific piece." data-ar=" للاستفسار عن قطعة محددة."> to enquire about a specific piece.</span>
         </p>
       </div>
     </div>
@@ -72,7 +73,7 @@ const collectionHref    = `/collections/${collection}`;
           <p data-en="We are happy to help — no appointment needed." data-ar="يسعدنا مساعدتك — لا حاجة لحجز موعد.">We are happy to help — no appointment needed.</p>
         </div>
         <div class="gallery-cta-actions">
-          <a href="/contact" class="btn btn-primary">
+          <a href={`${base}contact`} class="btn btn-primary">
             <span data-en="Contact Us" data-ar="تواصل معنا">Contact Us</span>
           </a>
           <a href={collectionHref} class="btn btn-ghost">

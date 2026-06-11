@@ -1,11 +1,12 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 
+const siteBase = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 const categories = [
-  { label: 'Rings',     href: '/collections/gold/rings',     img: 'photo-1515562141207-7a88fb7ce338' },
-  { label: 'Earrings',  href: '/collections/gold/earrings',  img: 'photo-1589128777073-263566ae5e4d' },
-  { label: 'Bracelets', href: '/collections/gold/bracelets', img: 'photo-1599643478518-a784e5dc4c8f' },
-  { label: 'Necklaces', href: '/collections/gold/necklaces', img: 'photo-1611652022419-a9419f74343d' },
+  { label: 'Rings',     href: `${siteBase}collections/gold/rings`,     img: 'photo-1515562141207-7a88fb7ce338' },
+  { label: 'Earrings',  href: `${siteBase}collections/gold/earrings`,  img: 'photo-1589128777073-263566ae5e4d' },
+  { label: 'Bracelets', href: `${siteBase}collections/gold/bracelets`, img: 'photo-1599643478518-a784e5dc4c8f' },
+  { label: 'Necklaces', href: `${siteBase}collections/gold/necklaces`, img: 'photo-1611652022419-a9419f74343d' },
 ];
 
 const base   = 'https://images.unsplash.com/';
@@ -17,7 +18,7 @@ const params = '?auto=format&fit=crop&w=600&q=80';
   <section class="page-header">
     <div class="container">
       <nav class="breadcrumb" aria-label="Breadcrumb">
-        <a href="/collections">Collections</a>
+        <a href={`${siteBase}collections`}>Collections</a>
         <span aria-hidden="true">/</span>
         <span aria-current="page">Gold</span>
       </nav>

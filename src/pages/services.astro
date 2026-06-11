@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 const services = [
   {
     title:  'Diamond Jewelry',
@@ -74,7 +75,7 @@ const services = [
       <div class="services-cta-inner reveal">
         <h2 data-en="Have a question about a piece?" data-ar="هل لديك سؤال حول قطعة؟">Have a question about a piece?</h2>
         <p data-en="We are happy to advise — no appointment needed." data-ar="يسعدنا تقديم المشورة — لا حاجة لحجز موعد.">We are happy to advise — no appointment needed.</p>
-        <a href="/contact" class="btn btn-primary">
+        <a href={`${base}contact`} class="btn btn-primary">
           <span data-en="Contact Us" data-ar="تواصل معنا">Contact Us</span>
         </a>
       </div>

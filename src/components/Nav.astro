@@ -3,17 +3,18 @@ interface Props {
   transparent?: boolean;
 }
 const { transparent = false } = Astro.props;
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 const path = Astro.url.pathname;
 
 const links = [
-  { href: '/',            label: 'Home',        ar: 'الرئيسية' },
-  { href: '/about',       label: 'About',       ar: 'من نحن' },
-  { href: '/services',    label: 'Services',    ar: 'خدماتنا' },
-  { href: '/collections', label: 'Collections', ar: 'المجموعات', children: [
-    { href: '/collections/diamond', label: 'Diamond', ar: 'الماس' },
-    { href: '/collections/gold',    label: 'Gold',    ar: 'الذهب' },
+  { href: base,                           label: 'Home',        ar: 'الرئيسية' },
+  { href: `${base}about`,                 label: 'About',       ar: 'من نحن' },
+  { href: `${base}services`,              label: 'Services',    ar: 'خدماتنا' },
+  { href: `${base}collections`,           label: 'Collections', ar: 'المجموعات', children: [
+    { href: `${base}collections/diamond`, label: 'Diamond', ar: 'الماس' },
+    { href: `${base}collections/gold`,    label: 'Gold',    ar: 'الذهب' },
   ]},
-  { href: '/policies',    label: 'Policies',    ar: 'السياسات' },
+  { href: `${base}policies`,              label: 'Policies',    ar: 'السياسات' },
 ];
 ---
 
@@ -23,10 +24,10 @@ const links = [
 >
   <div class="nav-inner container">
 
-    <a href="/" class="nav-logo" aria-label="Samir Akkawi Jewelry — Home">
+    <a href={base} class="nav-logo" aria-label="Samir Akkawi Jewelry — Home">
       <div class="logo-badge">
         <img
-          src="/assets/images/brand/akkawi-logo-3.jpg"
+          src={`${base}assets/images/brand/akkawi-logo-3.jpg`}
           alt="Akkawi Jewelry logo"
           width="44"
           height="44"
@@ -86,7 +87,7 @@ const links = [
       </li>
 
       <li class="nav-cta-item">
-        <a href="/contact" class="btn btn-ghost nav-cta-link">
+        <a href={`${base}contact`} class="btn btn-ghost nav-cta-link">
           <span data-en="Contact" data-ar="تواصل معنا">Contact</span>
         </a>
       </li>

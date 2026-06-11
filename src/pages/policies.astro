@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 ---
 
 <BaseLayout title="Store Policies" description="Exchange, return, and warranty policies at Samir Akkawi Jewelry — Amman, Jordan.">
@@ -90,7 +91,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <div class="policies-cta-inner reveal">
         <p data-en="Have a question about a specific situation? Come in or send us a message — we are always happy to clarify."
            data-ar="هل لديك سؤال حول حالة معينة؟ تفضل بالزيارة أو أرسل لنا رسالة — يسعدنا التوضيح دائماً.">Have a question about a specific situation? Come in or send us a message — we are always happy to clarify.</p>
-        <a href="/contact" class="btn btn-primary">
+        <a href={`${base}contact`} class="btn btn-primary">
           <span data-en="Contact Us" data-ar="تواصل معنا">Contact Us</span>
         </a>
       </div>

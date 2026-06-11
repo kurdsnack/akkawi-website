@@ -1,13 +1,14 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 
+const siteBase = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 const categories = [
-  { label: 'Rings',          href: '/collections/diamond/rings',    img: 'photo-1605100804763-247f67b3557e' },
-  { label: 'Necklaces',      href: '/collections/diamond/necklaces', img: 'photo-1611652022419-a9419f74343d' },
-  { label: 'Bracelets',      href: '/collections/diamond/bracelets', img: 'photo-1573408301185-9519b33b77c7' },
-  { label: 'Solitaire Rings',href: '/collections/diamond/solitaire', img: 'photo-1515562141207-7a88fb7ce338' },
-  { label: 'Earrings',       href: '/collections/diamond/earrings',  img: 'photo-1589128777073-263566ae5e4d' },
-  { label: 'Pendants',       href: '/collections/diamond/pendants',  img: 'photo-1506630448388-4e683c67ddb0' },
+  { label: 'Rings',          href: `${siteBase}collections/diamond/rings`,     img: 'photo-1605100804763-247f67b3557e' },
+  { label: 'Necklaces',      href: `${siteBase}collections/diamond/necklaces`, img: 'photo-1611652022419-a9419f74343d' },
+  { label: 'Bracelets',      href: `${siteBase}collections/diamond/bracelets`, img: 'photo-1573408301185-9519b33b77c7' },
+  { label: 'Solitaire Rings',href: `${siteBase}collections/diamond/solitaire`, img: 'photo-1515562141207-7a88fb7ce338' },
+  { label: 'Earrings',       href: `${siteBase}collections/diamond/earrings`,  img: 'photo-1589128777073-263566ae5e4d' },
+  { label: 'Pendants',       href: `${siteBase}collections/diamond/pendants`,  img: 'photo-1506630448388-4e683c67ddb0' },
 ];
 
 const base = 'https://images.unsplash.com/';
@@ -19,7 +20,7 @@ const params = '?auto=format&fit=crop&w=600&q=80';
   <section class="page-header">
     <div class="container">
       <nav class="breadcrumb" aria-label="Breadcrumb">
-        <a href="/collections">Collections</a>
+        <a href={`${siteBase}collections`}>Collections</a>
         <span aria-hidden="true">/</span>
         <span aria-current="page">Diamond</span>
       </nav>
