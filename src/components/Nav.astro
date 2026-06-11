@@ -1,0 +1,461 @@
+---
+interface Props {
+  transparent?: boolean;
+}
+const { transparent = false } = Astro.props;
+const path = Astro.url.pathname;
+
+const links = [
+  { href: '/',            label: 'Home',        ar: 'الرئيسية' },
+  { href: '/about',       label: 'About',       ar: 'من نحن' },
+  { href: '/services',    label: 'Services',    ar: 'خدماتنا' },
+  { href: '/collections', label: 'Collections', ar: 'المجموعات', children: [
+    { href: '/collections/diamond', label: 'Diamond', ar: 'الماس' },
+    { href: '/collections/gold',    label: 'Gold',    ar: 'الذهب' },
+  ]},
+  { href: '/policies',    label: 'Policies',    ar: 'السياسات' },
+];
+---
+
+<nav
+  class:list={['site-nav', { 'is-transparent': transparent }]}
+  aria-label="Main navigation"
+>
+  <div class="nav-inner container">
+
+    <a href="/" class="nav-logo" aria-label="Samir Akkawi Jewelry — Home">
+      <div class="logo-badge">
+        <img
+          src="/assets/images/brand/akkawi-logo-3.jpg"
+          alt="Akkawi Jewelry logo"
+          width="44"
+          height="44"
+        />
+      </div>
+      <span class="logo-wordmark" data-en="Samir Akkawi" data-ar="سمير عكاوي">Samir Akkawi</span>
+    </a>
+
+    <button
+      class="hamburger"
+      aria-label="Toggle menu"
+      aria-expanded="false"
+      aria-controls="nav-menu"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <ul id="nav-menu" class="nav-links" role="list">
+      {links.map((link) => (
+        <li class:list={[{ 'has-children': link.children }]}>
+          <a
+            href={link.href}
+            aria-current={path === link.href ? 'page' : undefined}
+          >
+            <span data-en={link.label} data-ar={link.ar}>{link.label}</span>
+            {link.children && (
+              <svg class="chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="6 9 12 15 18 9"/>
+              </svg>
+            )}
+          </a>
+          {link.children && (
+            <ul class="dropdown" role="list">
+              {link.children.map((child) => (
+                <li>
+                  <a
+                    href={child.href}
+                    aria-current={path === child.href ? 'page' : undefined}
+                  >
+                    <span data-en={child.label} data-ar={child.ar}>{child.label}</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          )}
+        </li>
+      ))}
+
+      <li class="nav-lang-item">
+        <button class="lang-toggle" id="lang-toggle" aria-label="Switch language">
+          <span class="lang-opt" data-lang="en">EN</span>
+          <span class="lang-divider">/</span>
+          <span class="lang-opt" data-lang="ar">ع</span>
+        </button>
+      </li>
+
+      <li class="nav-cta-item">
+        <a href="/contact" class="btn btn-ghost nav-cta-link">
+          <span data-en="Contact" data-ar="تواصل معنا">Contact</span>
+        </a>
+      </li>
+    </ul>
+
+  </div>
+</nav>
+
+<style>
+/* ── Shell ──────────────────────────────────────────────── */
+.site-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  height: var(--nav-height);
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+  transition:
+    background var(--transition-slow),
+    border-color var(--transition-slow),
+    box-shadow var(--transition-slow);
+}
+
+.site-nav.is-scrolled {
+  background: var(--color-surface);
+  border-color: var(--color-border);
+  box-shadow: 0 2px 16px rgba(28, 25, 23, 0.08);
+}
+
+.site-nav.is-transparent:not(.is-scrolled) {
+  background: rgba(250, 248, 244, 0.0);
+  border-color: transparent;
+  box-shadow: none;
+}
+
+/* ── Inner layout ───────────────────────────────────────── */
+.nav-inner {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  gap: var(--space-5);
+}
+
+/* ── Logo ───────────────────────────────────────────────── */
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex-shrink: 0;
+}
+
+.logo-badge {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  flex-shrink: 0;
+}
+
+.logo-badge img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.logo-wordmark {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: 1.05rem;
+  letter-spacing: 0.06em;
+  color: var(--color-text);
+  white-space: nowrap;
+}
+
+/* ── Nav links ──────────────────────────────────────────── */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-left: auto;
+}
+
+.nav-links > li > a {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  padding: 6px 0;
+  transition: color var(--transition-fast);
+  white-space: nowrap;
+}
+
+.nav-links > li > a:hover,
+.nav-links > li > a[aria-current="page"] {
+  color: var(--color-gold-dark);
+}
+
+.chevron {
+  opacity: 0.5;
+  transition: transform var(--transition-fast);
+}
+
+.has-children:hover .chevron {
+  transform: rotate(180deg);
+}
+
+/* ── Dropdown ───────────────────────────────────────────── */
+.has-children {
+  position: relative;
+}
+
+.dropdown {
+  position: absolute;
+  top: calc(100% + 12px);
+  left: 50%;
+  transform: translateX(-50%);
+  min-width: 150px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-2) 0;
+  box-shadow: var(--shadow-card);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--transition-fast), transform var(--transition-fast);
+  transform: translateX(-50%) translateY(-4px);
+}
+
+.has-children:hover .dropdown,
+.has-children:focus-within .dropdown {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
+
+.dropdown li a {
+  display: block;
+  padding: 10px var(--space-4);
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  transition: color var(--transition-fast), background var(--transition-fast);
+}
+
+.dropdown li a:hover,
+.dropdown li a[aria-current="page"] {
+  color: var(--color-gold-dark);
+  background: rgba(154, 114, 32, 0.05);
+}
+
+/* ── Language toggle ────────────────────────────────────── */
+.nav-lang-item {
+  margin-left: var(--space-2);
+}
+
+.lang-toggle {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px 6px;
+  border-radius: var(--radius-sm);
+  transition: background var(--transition-fast);
+}
+
+.lang-toggle:hover {
+  background: var(--color-surface-2);
+}
+
+.lang-opt {
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  color: var(--color-text-light);
+  transition: color var(--transition-fast);
+}
+
+.lang-opt.is-active {
+  color: var(--color-text);
+  font-weight: 500;
+}
+
+.lang-divider {
+  font-size: 0.65rem;
+  color: var(--color-border);
+}
+
+/* ── CTA button in nav ──────────────────────────────────── */
+.nav-cta-item {
+  margin-left: var(--space-2);
+}
+
+.nav-cta-link.btn-ghost {
+  padding: 8px var(--space-4);
+  font-size: 0.7rem;
+  color: var(--color-text);
+  border-color: var(--color-border);
+}
+
+.nav-cta-link.btn-ghost:hover {
+  background: var(--color-bg);
+  border-color: var(--color-text-muted);
+}
+
+/* ── Hamburger (mobile only) ────────────────────────────── */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 36px;
+  height: 36px;
+  padding: 4px;
+  margin-left: auto;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.hamburger span {
+  display: block;
+  width: 22px;
+  height: 1.5px;
+  background: var(--color-text-muted);
+  transition: transform var(--transition-base), opacity var(--transition-base);
+  transform-origin: center;
+}
+
+.hamburger[aria-expanded="true"] span:nth-child(1) {
+  transform: translateY(6.5px) rotate(45deg);
+}
+.hamburger[aria-expanded="true"] span:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+.hamburger[aria-expanded="true"] span:nth-child(3) {
+  transform: translateY(-6.5px) rotate(-45deg);
+}
+
+/* ── Mobile layout ──────────────────────────────────────── */
+@media (max-width: 900px) {
+  .logo-wordmark { display: none; }
+  .hamburger { display: flex; }
+
+  .nav-links {
+    display: none;
+    position: fixed;
+    top: var(--nav-height);
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    background: var(--color-surface);
+    border-bottom: 1px solid var(--color-border);
+    padding: var(--space-3) 0;
+    margin-left: 0;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+  }
+
+  .nav-links.is-open { display: flex; }
+
+  .nav-links > li > a {
+    display: block;
+    padding: 14px var(--space-5);
+    font-size: 0.8rem;
+  }
+
+  .nav-lang-item {
+    margin-left: 0;
+    padding: var(--space-3) var(--space-5);
+  }
+
+  .nav-cta-item { margin-left: 0; }
+  .nav-cta-link {
+    display: block;
+    width: calc(100% - var(--space-5) * 2);
+    margin: var(--space-3) var(--space-5) 0;
+    text-align: center;
+    border-radius: var(--radius-sm);
+  }
+
+  /* Inline dropdown on mobile */
+  .dropdown {
+    position: static;
+    transform: none !important;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+    opacity: 1;
+    pointer-events: auto;
+    display: none;
+  }
+
+  .has-children.is-open > .dropdown { display: block; }
+
+  .dropdown li a {
+    padding-left: calc(var(--space-5) + var(--space-4));
+    font-size: 0.75rem;
+  }
+
+  .chevron { display: none; }
+}
+</style>
+
+<script>
+  document.addEventListener('astro:page-load', () => {
+    // ── Language system ────────────────────────────────────
+    function applyLang(lang: string) {
+      document.documentElement.lang = lang;
+      document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+      document.querySelectorAll<HTMLElement>('[data-en][data-ar]').forEach((el) => {
+        el.textContent = lang === 'ar' ? el.dataset.ar! : el.dataset.en!;
+      });
+      document.querySelectorAll<HTMLElement>('.lang-opt').forEach((opt) => {
+        opt.classList.toggle('is-active', opt.dataset.lang === lang);
+      });
+      localStorage.setItem('site-lang', lang);
+    }
+
+    const savedLang = localStorage.getItem('site-lang') || 'en';
+    applyLang(savedLang);
+
+    document.getElementById('lang-toggle')?.addEventListener('click', () => {
+      const current = document.documentElement.lang || 'en';
+      applyLang(current === 'ar' ? 'en' : 'ar');
+    });
+
+    // ── Transparent → solid on scroll ─────────────────────
+    const nav = document.querySelector('.site-nav.is-transparent') as HTMLElement | null;
+    if (nav) {
+      const update = () => nav.classList.toggle('is-scrolled', window.scrollY > 80);
+      window.addEventListener('scroll', update, { passive: true });
+      update();
+    }
+
+    // ── Mobile hamburger ───────────────────────────────────
+    const burger = document.querySelector('.hamburger') as HTMLButtonElement | null;
+    const menu   = document.querySelector('#nav-menu') as HTMLElement | null;
+    burger?.addEventListener('click', () => {
+      const open = menu?.classList.toggle('is-open') ?? false;
+      burger.setAttribute('aria-expanded', String(open));
+    });
+
+    // ── Mobile collection sub-toggle ──────────────────────
+    document.querySelectorAll('.has-children').forEach((item) => {
+      item.querySelector('a')?.addEventListener('click', (e) => {
+        if (window.innerWidth <= 900) {
+          e.preventDefault();
+          item.classList.toggle('is-open');
+        }
+      });
+    });
+  });
+</script>

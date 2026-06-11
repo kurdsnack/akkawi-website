@@ -1,0 +1,189 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+const hero  = 'https://images.unsplash.com/photo-1617038260897-41a1f14a8ca0?auto=format&fit=crop&w=1400&q=80';
+const store = 'https://images.unsplash.com/photo-1573408301185-9519b33b77c7?auto=format&fit=crop&w=700&q=80';
+
+const values = [
+  {
+    title: 'High Quality',      arTitle: 'جودة عالية',
+    body:  'We sell only jewelry we believe in — fine materials, excellent craftsmanship, and pieces built to last.',
+    arBody: 'نبيع فقط المجوهرات التي نؤمن بها — مواد راقية وصناعة متقنة وقطع مصنوعة لتدوم.',
+  },
+  {
+    title: 'After-Sales Service', arTitle: 'خدمة ما بعد البيع',
+    body:  'Polishing, maintenance, and repairs are part of the relationship. We stand by every piece we sell.',
+    arBody: 'التلميع والصيانة والإصلاح جزء من العلاقة. نقف خلف كل قطعة نبيعها.',
+  },
+  {
+    title: 'Customer First',    arTitle: 'العميل أولاً',
+    body:  'Our clients are our priority. We take the time to understand what you are looking for before you ever make a decision.',
+    arBody: 'عملاؤنا أولويتنا. نأخذ الوقت الكافي لفهم ما تبحث عنه قبل أن تتخذ أي قرار.',
+  },
+  {
+    title: 'Family Values',     arTitle: 'قيم العائلة',
+    body:  'Samir Akkawi Jewelry is a family business. We treat every customer the way we would treat family.',
+    arBody: 'سمير عكاوي للمجوهرات مشروع عائلي. نتعامل مع كل عميل كما نتعامل مع أفراد العائلة.',
+  },
+  {
+    title: 'Credibility',       arTitle: 'المصداقية',
+    body:  'Thirty years of trust are not built by accident. We price fairly, advise honestly, and never oversell.',
+    arBody: 'ثلاثون عاماً من الثقة لا تُبنى بالمصادفة. نُسعّر بعدالة ونُشير بصدق ولا نبالغ في البيع أبداً.',
+  },
+  {
+    title: 'Principled Business', arTitle: 'أعمال مبدئية',
+    body:  'We hold ourselves to a standard. Our reputation in Amman is something we have earned and protect every day.',
+    arBody: 'نلتزم بمعيار راسخ. سمعتنا في عمّان شيء اكتسبناه ونحميه كل يوم.',
+  },
+];
+---
+
+<BaseLayout title="About" description="The story behind Samir Akkawi Jewelry — 30+ years of fine gold and diamond jewelry in Amman, Jordan.">
+
+  <section class="page-hero" style={`background-image: url('${hero}')`} aria-label="About us">
+    <div class="page-hero-overlay"></div>
+    <div class="page-hero-content container">
+      <span class="section-eyebrow" style="color: rgba(201,168,76,0.9)"
+        data-en="Our Story" data-ar="قصتنا">Our Story</span>
+      <h1 data-en="When Creativity and Quality Meet" data-ar="حين يلتقي الإبداع بالجودة">
+        When Creativity<br /><em>and Quality Meet</em>
+      </h1>
+    </div>
+  </section>
+
+  <section class="about-body">
+    <div class="about-inner container">
+
+      <div class="about-text reveal">
+        <span class="section-eyebrow" data-en="Who We Are" data-ar="من نحن">Who We Are</span>
+        <h2 class="section-title" data-en="Samir Akkawi Jewelry" data-ar="سمير عكاوي للمجوهرات">Samir Akkawi Jewelry</h2>
+        <div class="gold-rule"></div>
+        <p data-en="We are a boutique fine jewelry store located in the heart of Um Uthaina, Amman. Since we opened our doors in the early 1990s, we have built a reputation for offering unique yet classic pieces — gold and diamond jewelry that stands the test of time."
+           data-ar="نحن محل مجوهرات راقٍ في قلب أم أذينة، عمّان. منذ فتحنا أبوابنا مطلع التسعينيات، بنينا سمعة في تقديم قطع فريدة وكلاسيكية في آنٍ واحد — مجوهرات من الذهب والألماس تصمد أمام اختبار الزمن.">
+          We are a boutique fine jewelry store located in the heart of Um Uthaina, Amman. Since we opened our doors in the early 1990s, we have built a reputation for offering unique yet classic pieces — gold and diamond jewelry that stands the test of time.
+        </p>
+        <p data-en="Our collection is not driven by trends. It is driven by craftsmanship, quality, and the belief that the right piece of jewelry marks a moment in your life forever. Whether it is an engagement ring, a wedding gift, or something you choose for yourself — we take that responsibility seriously."
+           data-ar="مجموعتنا لا تقودها الموضات. يقودها الإتقان والجودة والإيمان بأن القطعة الصحيحة من المجوهرات تُرسِّخ لحظة في حياتك إلى الأبد. سواء كان خاتم خطوبة أو هدية زفاف أو شيئاً تختاره لنفسك — نأخذ هذه المسؤولية بجدية تامة.">
+          Our collection is not driven by trends. It is driven by craftsmanship, quality, and the belief that the right piece of jewelry marks a moment in your life forever. Whether it is an engagement ring, a wedding gift, or something you choose for yourself — we take that responsibility seriously.
+        </p>
+        <p data-en="Every item we sell is backed by our credibility and our commitment to after-sales service. We do not consider a sale complete when you walk out the door. We consider it the beginning of a long relationship."
+           data-ar="كل ما نبيعه مدعوم بمصداقيتنا والتزامنا بخدمة ما بعد البيع. لا نعتبر البيع مكتملاً حين تغادر الباب. بل نعتبره بداية علاقة طويلة.">
+          Every item we sell is backed by our credibility and our commitment to after-sales service. We do not consider a sale complete when you walk out the door. We consider it the beginning of a long relationship.
+        </p>
+      </div>
+
+      <div class="about-image reveal">
+        <img src={store} alt="Samir Akkawi Jewelry store display" width="700" height="840" loading="lazy" />
+      </div>
+
+    </div>
+  </section>
+
+  <section class="values" aria-label="Our values">
+    <div class="container">
+      <div class="values-heading reveal">
+        <span class="section-eyebrow" data-en="What We Stand For" data-ar="ما نؤمن به">What We Stand For</span>
+        <h2 class="section-title" data-en="Our Values" data-ar="قيمنا">Our Values</h2>
+      </div>
+      <div class="values-grid">
+        {values.map(v => (
+          <div class="value-card reveal">
+            <div class="value-rule"></div>
+            <h3 data-en={v.title} data-ar={v.arTitle}>{v.title}</h3>
+            <p data-en={v.body} data-ar={v.arBody}>{v.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="about-cta">
+    <div class="container">
+      <div class="about-cta-inner reveal">
+        <h2 data-en="Ready to find your piece?" data-ar="هل أنت مستعد لإيجاد قطعتك؟">Ready to find your piece?</h2>
+        <div class="about-cta-actions">
+          <a href="/collections" class="btn btn-primary">
+            <span data-en="Browse Collections" data-ar="تصفح المجموعات">Browse Collections</span>
+          </a>
+          <a href="/contact" class="btn btn-ghost">
+            <span data-en="Contact Us" data-ar="تواصل معنا">Contact Us</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+.page-hero {
+  height: 55vh;
+  min-height: 360px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+}
+.page-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(28,25,23,0.65) 0%, rgba(28,25,23,0.2) 60%, transparent 100%);
+}
+.page-hero-content {
+  position: relative;
+  z-index: 1;
+  padding-bottom: var(--space-7);
+}
+.page-hero-content h1 {
+  font-size: clamp(2.2rem, 5vw, 4rem);
+  font-weight: 300;
+  color: var(--color-white);
+}
+.page-hero-content h1 em { font-style: italic; color: rgba(212,184,106,0.9); }
+
+.about-body { padding: var(--space-8) 0; background: var(--color-surface); }
+.about-inner {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: var(--space-7);
+  align-items: center;
+}
+.about-text p { color: var(--color-text-muted); margin-bottom: var(--space-4); max-width: none; }
+.about-image { border-radius: var(--radius-md); overflow: hidden; box-shadow: 0 8px 40px rgba(28,25,23,0.1); }
+.about-image img { width: 100%; height: auto; display: block; }
+
+.values { padding: var(--space-8) 0; background: var(--color-bg); }
+.values-heading { margin-bottom: var(--space-6); }
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-5);
+}
+.value-card {
+  padding: var(--space-5);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+}
+.value-rule {
+  width: 32px; height: 2px;
+  background: var(--color-gold);
+  margin-bottom: var(--space-4);
+}
+.value-card h3 { font-size: 1.1rem; margin-bottom: var(--space-3); }
+.value-card p { font-size: 0.875rem; color: var(--color-text-muted); max-width: none; }
+
+.about-cta { padding: var(--space-7) 0; background: var(--color-surface-2); border-top: 1px solid var(--color-border); }
+.about-cta-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: var(--space-5); }
+.about-cta-inner h2 { font-size: clamp(1.4rem, 3vw, 2rem); max-width: none; }
+.about-cta-actions { display: flex; gap: var(--space-3); flex-wrap: wrap; }
+
+@media (max-width: 900px) {
+  .about-inner { grid-template-columns: 1fr; }
+  .values-grid { grid-template-columns: repeat(2, 1fr); }
+  .about-cta-inner { justify-content: flex-start; }
+}
+@media (max-width: 600px) {
+  .values-grid { grid-template-columns: 1fr; }
+}
+</style>

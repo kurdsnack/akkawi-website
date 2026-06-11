@@ -1,0 +1,24 @@
+---
+import CollectionLayout from '../../../layouts/CollectionLayout.astro';
+const base = 'https://images.unsplash.com/';
+const q    = '?auto=format&fit=crop&w=500&q=80';
+---
+<CollectionLayout
+  title="Diamond Earrings"
+  description="Diamond studs, drops and hoops in white and yellow gold — Samir Akkawi Jewelry, Amman."
+  collection="diamond"
+  category="Earrings"
+  arCategory="أقراط"
+  intro="Diamond studs for every day, drop earrings for evenings, and hoops for everything in between — all set in 18-karat gold."
+  arIntro="أقراط ألماس للأيام العادية، وأقراط معلقة للسهرات، وأحلاق لكل المناسبات — كلها في الذهب عيار 18."
+  products={[
+    { img: base+'photo-1589128777073-263566ae5e4d'+q, alt: 'Diamond stud earrings' },
+    { img: base+'photo-1573408301185-9519b33b77c7'+q, alt: 'Diamond earrings display' },
+    { img: base+'photo-1515562141207-7a88fb7ce338'+q, alt: 'Fine diamond earrings' },
+    { img: base+'photo-1611652022419-a9419f74343d'+q, alt: 'Diamond drop earrings' },
+    { img: base+'photo-1605100804763-247f67b3557e'+q, alt: 'Diamond hoop earrings' },
+    { img: base+'photo-1506630448388-4e683c67ddb0'+q, alt: 'White gold earrings' },
+    { img: base+'photo-1599643478518-a784e5dc4c8f'+q, alt: 'Gold diamond earrings' },
+    { img: base+'photo-1617038260897-41a1f14a8ca0'+q, alt: 'Luxury diamond earrings' },
+  ]}
+/>

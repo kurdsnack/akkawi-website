@@ -1,0 +1,24 @@
+---
+import CollectionLayout from '../../../layouts/CollectionLayout.astro';
+const base = 'https://images.unsplash.com/';
+const q    = '?auto=format&fit=crop&w=500&q=80';
+---
+<CollectionLayout
+  title="Solitaire Rings"
+  description="Diamond solitaire and wedding rings — Samir Akkawi Jewelry, Amman."
+  collection="diamond"
+  category="Solitaire Rings"
+  arCategory="سوليتير"
+  intro="The solitaire is timeless — a single diamond, perfectly set, worn for a lifetime. Our collection spans classic round cuts to elegant ovals and cushions."
+  arIntro="السوليتير خالد — ألماسة واحدة مثبتة بإتقان، تُرتدى مدى الحياة. مجموعتنا تمتد من القطع الدائرية الكلاسيكية إلى الأوفال والكوشن الأنيقة."
+  products={[
+    { img: base+'photo-1515562141207-7a88fb7ce338'+q, alt: 'Diamond solitaire ring' },
+    { img: base+'photo-1605100804763-247f67b3557e'+q, alt: 'Classic diamond solitaire' },
+    { img: base+'photo-1506630448388-4e683c67ddb0'+q, alt: 'Solitaire engagement ring' },
+    { img: base+'photo-1573408301185-9519b33b77c7'+q, alt: 'Solitaire ring display' },
+    { img: base+'photo-1589128777073-263566ae5e4d'+q, alt: 'Fine solitaire ring' },
+    { img: base+'photo-1611652022419-a9419f74343d'+q, alt: 'White gold solitaire' },
+    { img: base+'photo-1599643478518-a784e5dc4c8f'+q, alt: 'Yellow gold solitaire' },
+    { img: base+'photo-1617038260897-41a1f14a8ca0'+q, alt: 'Luxury solitaire ring' },
+  ]}
+/>

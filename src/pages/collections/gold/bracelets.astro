@@ -1,0 +1,24 @@
+---
+import CollectionLayout from '../../../layouts/CollectionLayout.astro';
+const base = 'https://images.unsplash.com/';
+const q    = '?auto=format&fit=crop&w=500&q=80';
+---
+<CollectionLayout
+  title="Gold Bracelets"
+  description="18-karat white and yellow gold bracelets and bangles — Samir Akkawi Jewelry, Amman."
+  collection="gold"
+  category="Bracelets"
+  arCategory="أساور"
+  intro="Gold chain bracelets, bangles, and cuffs in 18-karat white and yellow gold — worn alone or stacked, they are a mark of quiet elegance."
+  arIntro="أساور سلسلة وبانجل وأصفاد من الذهب الأبيض والأصفر عيار 18 — ترتدينها منفردة أو متكدسة، علامة على الأناقة الهادئة."
+  products={[
+    { img: base+'photo-1599643478518-a784e5dc4c8f'+q, alt: 'Gold chain bracelet' },
+    { img: base+'photo-1573408301185-9519b33b77c7'+q, alt: 'Gold bracelet display' },
+    { img: base+'photo-1515562141207-7a88fb7ce338'+q, alt: 'Yellow gold bracelet' },
+    { img: base+'photo-1611652022419-a9419f74343d'+q, alt: 'White gold bracelet' },
+    { img: base+'photo-1605100804763-247f67b3557e'+q, alt: 'Gold bangle' },
+    { img: base+'photo-1589128777073-263566ae5e4d'+q, alt: 'Fine gold bracelet' },
+    { img: base+'photo-1506630448388-4e683c67ddb0'+q, alt: 'Gold cuff bracelet' },
+    { img: base+'photo-1617038260897-41a1f14a8ca0'+q, alt: 'Luxury gold bracelet' },
+  ]}
+/>

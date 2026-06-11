@@ -1,0 +1,63 @@
+---
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import { ViewTransitions } from 'astro:transitions';
+import '../styles/tokens.css';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+  transparentNav?: boolean;
+}
+
+const {
+  title,
+  description = 'Fine gold and diamond jewelry crafted to last a lifetime. Samir Akkawi Jewelry — Amman, Jordan.',
+  transparentNav = false,
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <meta property="og:title" content={`${title} — Samir Akkawi Jewelry`} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <title>{title} — Samir Akkawi Jewelry</title>
+    <ViewTransitions />
+    <!-- Prevent RTL flash for returning Arabic users -->
+    <script is:inline>
+      (function(){var l=localStorage.getItem('site-lang')||'en';document.documentElement.lang=l;document.documentElement.dir=l==='ar'?'rtl':'ltr';})();
+    </script>
+  </head>
+  <body>
+    <Nav transparent={transparentNav} />
+    <main class:list={[{ 'hero-page': transparentNav }]}>
+      <slot />
+    </main>
+    <Footer />
+
+    <script>
+      // Scroll-reveal: watch elements with .reveal class
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.12 }
+      );
+
+      document.addEventListener('astro:page-load', () => {
+        document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,132 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const services = [
+  {
+    title:  'Diamond Jewelry',
+    arTitle: 'مجوهرات الألماس',
+    body:   'We carry a wide range of certified and guaranteed fine Belgian diamond jewelry. Each piece comes with full documentation and our personal assurance of quality. Whether you are shopping for an engagement ring, a solitaire, or a diamond necklace — we have the range and the expertise to help you choose.',
+    arBody: 'نحمل تشكيلة واسعة من مجوهرات الألماس البلجيكي الراقية المعتمدة والمضمونة. تأتي كل قطعة بوثائق كاملة وضماننا الشخصي للجودة. سواء كنت تتسوق لخاتم خطوبة أو سوليتير أو قلادة ألماس — لدينا التشكيلة والخبرة لمساعدتك على الاختيار.',
+    img: 'https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=700&q=80',
+    alt: 'Diamond jewelry selection',
+  },
+  {
+    title:  'Gold Jewelry',
+    arTitle: 'مجوهرات الذهب',
+    body:   '18-karat white and yellow gold — rings, earrings, bracelets, and necklaces. We offer one of the widest selections of gold jewelry in Amman, with designs that range from everyday elegant to statement pieces for special occasions. All gold is priced at prevailing market value with full transparency.',
+    arBody: 'ذهب أبيض وأصفر عيار 18 — خواتم وأقراط وأساور وقلائد. نقدم من أوسع تشكيلات مجوهرات الذهب في عمّان، بتصاميم تتراوح بين الأناقة اليومية وقطع الإدهاش للمناسبات الخاصة. كل الذهب مُسعَّر بالقيمة السوقية السائدة بشفافية تامة.',
+    img: 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=700&q=80',
+    alt: 'Gold jewelry collection',
+  },
+  {
+    title:  'Repair & Maintenance',
+    arTitle: 'إصلاح وصيانة',
+    body:   'Jewelry deserves care over time. We offer high-standard, prompt repair services for any piece — not just those purchased from us. Resizing, stone setting, clasp repair, rhodium plating, and general restoration are all handled in-house. Bring it in and we will assess it honestly.',
+    arBody: 'المجوهرات تستحق العناية مع مرور الوقت. نقدم خدمات إصلاح عالية الجودة وسريعة لأي قطعة — ليس فقط تلك المشتراة منا. تعديل المقاس وتثبيت الأحجار وإصلاح الأقفال والطلاء بالروديوم والترميم العام — كل ذلك يتم داخل المتجر. أحضر قطعتك وسنقيّمها بصدق.',
+    img: 'https://images.unsplash.com/photo-1573408301185-9519b33b77c7?auto=format&fit=crop&w=700&q=80',
+    alt: 'Jewelry repair and maintenance',
+  },
+  {
+    title:  'Appraisals & Consultancy',
+    arTitle: 'التقييم والاستشارة',
+    body:   'We offer free, impartial jewelry consultancy and valuation of diamonds, gold, and watches. Whether you are purchasing, selling, insuring, or simply curious about the value of a piece you own — our appraisals are honest, professional, and carry no obligation to buy or sell.',
+    arBody: 'نقدم استشارة مجوهرات مجانية ومحايدة وتقييم للألماس والذهب والساعات. سواء كنت تشتري أو تبيع أو تؤمّن أو فضولي لمعرفة قيمة قطعة تمتلكها — تقييماتنا صادقة ومهنية وغير ملزِمة بأي شراء أو بيع.',
+    img: 'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=700&q=80',
+    alt: 'Jewelry appraisal and consultancy',
+  },
+];
+---
+
+<BaseLayout title="Services" description="Diamond jewelry, gold jewelry, repair and maintenance, and free appraisals — Samir Akkawi Jewelry, Amman.">
+
+  <section class="page-header">
+    <div class="container">
+      <span class="section-eyebrow" data-en="What We Do" data-ar="ما نقوم به">What We Do</span>
+      <h1 class="section-title" style="font-size: clamp(2.4rem, 5vw, 4rem);"
+        data-en="Our Services" data-ar="خدماتنا">Our Services</h1>
+      <p class="section-subtitle"
+        data-en="Our clients are always our first priority — we are here to help you buy, sell, repair, and appraise your jewelry with honesty and care."
+        data-ar="عملاؤنا هم دائماً أولويتنا — نحن هنا لمساعدتك في الشراء والبيع والإصلاح والتقييم بصدق وعناية.">
+        Our clients are always our first priority — we are here to help you buy, sell, repair, and appraise your jewelry with honesty and care.
+      </p>
+    </div>
+  </section>
+
+  <section class="services-list">
+    <div class="container">
+      {services.map((s, i) => (
+        <div class:list={['service-row reveal', { 'service-row--reverse': i % 2 !== 0 }]}>
+          <div class="service-row-img">
+            <img src={s.img} alt={s.alt} width="700" height="500" loading="lazy" />
+          </div>
+          <div class="service-row-text">
+            <div class="value-rule"></div>
+            <h2 data-en={s.title} data-ar={s.arTitle}>{s.title}</h2>
+            <p data-en={s.body} data-ar={s.arBody}>{s.body}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="services-cta">
+    <div class="container">
+      <div class="services-cta-inner reveal">
+        <h2 data-en="Have a question about a piece?" data-ar="هل لديك سؤال حول قطعة؟">Have a question about a piece?</h2>
+        <p data-en="We are happy to advise — no appointment needed." data-ar="يسعدنا تقديم المشورة — لا حاجة لحجز موعد.">We are happy to advise — no appointment needed.</p>
+        <a href="/contact" class="btn btn-primary">
+          <span data-en="Contact Us" data-ar="تواصل معنا">Contact Us</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+.page-header {
+  padding: var(--space-7) 0 var(--space-6);
+  background: var(--color-bg);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.services-list { padding: var(--space-7) 0; background: var(--color-surface); }
+
+.service-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-7);
+  align-items: center;
+  padding: var(--space-6) 0;
+  border-bottom: 1px solid var(--color-border);
+}
+.service-row:last-child { border-bottom: none; }
+.service-row--reverse .service-row-img { order: 2; }
+.service-row--reverse .service-row-text { order: 1; }
+
+.service-row-img {
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: 0 8px 40px rgba(28,25,23,0.08);
+}
+.service-row-img img { width: 100%; height: auto; display: block; }
+
+.value-rule { width: 32px; height: 2px; background: var(--color-gold); margin-bottom: var(--space-4); }
+.service-row-text h2 { font-size: 1.8rem; margin-bottom: var(--space-4); }
+.service-row-text p { color: var(--color-text-muted); max-width: none; }
+
+.services-cta {
+  padding: var(--space-7) 0;
+  background: var(--color-surface-2);
+  border-top: 1px solid var(--color-border);
+  text-align: center;
+}
+.services-cta-inner h2 { font-size: clamp(1.5rem, 3vw, 2.2rem); margin-bottom: var(--space-3); }
+.services-cta-inner p { color: var(--color-text-muted); margin: 0 auto var(--space-5); }
+
+@media (max-width: 768px) {
+  .service-row { grid-template-columns: 1fr; }
+  .service-row--reverse .service-row-img { order: 0; }
+  .service-row--reverse .service-row-text { order: 1; }
+}
+</style>

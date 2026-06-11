@@ -1,0 +1,24 @@
+---
+import CollectionLayout from '../../../layouts/CollectionLayout.astro';
+const base = 'https://images.unsplash.com/';
+const q    = '?auto=format&fit=crop&w=500&q=80';
+---
+<CollectionLayout
+  title="Gold Necklaces"
+  description="18-karat white and yellow gold necklaces and chains — Samir Akkawi Jewelry, Amman."
+  collection="gold"
+  category="Necklaces"
+  arCategory="قلائد"
+  intro="From fine gold chains to layered pendants — our gold necklaces are made to be worn every day and treasured for a lifetime."
+  arIntro="من سلاسل الذهب الرفيعة إلى القلائد المتعددة الطبقات — قلائدنا الذهبية مصنوعة لترتديها يومياً وتحتفظي بها مدى الحياة."
+  products={[
+    { img: base+'photo-1611652022419-a9419f74343d'+q, alt: 'Gold necklace' },
+    { img: base+'photo-1599643478518-a784e5dc4c8f'+q, alt: 'Yellow gold chain' },
+    { img: base+'photo-1573408301185-9519b33b77c7'+q, alt: 'Gold necklace display' },
+    { img: base+'photo-1515562141207-7a88fb7ce338'+q, alt: 'White gold necklace' },
+    { img: base+'photo-1505740420928-5e560c06d30e'+q, alt: 'Fine gold chain' },
+    { img: base+'photo-1589128777073-263566ae5e4d'+q, alt: 'Layered gold necklace' },
+    { img: base+'photo-1506630448388-4e683c67ddb0'+q, alt: 'Gold pendant necklace' },
+    { img: base+'photo-1617038260897-41a1f14a8ca0'+q, alt: 'Luxury gold necklace' },
+  ]}
+/>

@@ -1,0 +1,205 @@
+---
+import BaseLayout from './BaseLayout.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  collection: 'diamond' | 'gold';
+  category: string;
+  arCategory?: string;
+  intro: string;
+  arIntro?: string;
+  products: { img: string; alt: string }[];
+}
+
+const { title, description, collection, category, arCategory, intro, arIntro, products } = Astro.props;
+const collectionLabel   = collection === 'diamond' ? 'Diamond' : 'Gold';
+const arCollectionLabel = collection === 'diamond' ? 'الماس' : 'الذهب';
+const collectionHref    = `/collections/${collection}`;
+---
+
+<BaseLayout title={title} description={description}>
+
+  <section class="page-header">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/collections" data-en="Collections" data-ar="المجموعات">Collections</a>
+        <span aria-hidden="true">/</span>
+        <a href={collectionHref} data-en={collectionLabel} data-ar={arCollectionLabel}>{collectionLabel}</a>
+        <span aria-hidden="true">/</span>
+        <span aria-current="page" data-en={category} data-ar={arCategory || category}>{category}</span>
+      </nav>
+      <span class="section-eyebrow"
+        data-en={`${collectionLabel} Collection`}
+        data-ar={`مجموعة ${arCollectionLabel}`}>{collectionLabel} Collection</span>
+      <h1 class="section-title" style="font-size: clamp(2.2rem, 5vw, 3.5rem);"
+        data-en={category} data-ar={arCategory || category}>{category}</h1>
+      <p class="section-subtitle" data-en={intro} data-ar={arIntro || intro}>{intro}</p>
+    </div>
+  </section>
+
+  <section class="product-gallery">
+    <div class="container">
+      <div class="product-grid">
+        {products.map(p => (
+          <div class="product-card reveal">
+            <div class="product-img">
+              <img src={p.img} alt={p.alt} width="500" height="500" loading="lazy" />
+              <div class="product-overlay">
+                <span data-en="Visit us to enquire" data-ar="تفضل بزيارتنا للاستفسار">Visit us to enquire</span>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div class="gallery-note reveal">
+        <div class="gold-rule"></div>
+        <p>
+          <span data-en="Pricing is not displayed online — all pieces are priced at current market value. Visit us in store or "
+                data-ar="الأسعار غير معروضة على الإنترنت — تُسعَّر جميع القطع بالقيمة السوقية الحالية. زرنا في المتجر أو ">Pricing is not displayed online — all pieces are priced at current market value.
+            Visit us in store or </span><a href="/contact" data-en="get in touch" data-ar="تواصل معنا">get in touch</a><span data-en=" to enquire about a specific piece." data-ar=" للاستفسار عن قطعة محددة."> to enquire about a specific piece.</span>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="gallery-cta">
+    <div class="container">
+      <div class="gallery-cta-inner reveal">
+        <div>
+          <h2 data-en="Interested in a piece?" data-ar="هل أعجبتك قطعة؟">Interested in a piece?</h2>
+          <p data-en="We are happy to help — no appointment needed." data-ar="يسعدنا مساعدتك — لا حاجة لحجز موعد.">We are happy to help — no appointment needed.</p>
+        </div>
+        <div class="gallery-cta-actions">
+          <a href="/contact" class="btn btn-primary">
+            <span data-en="Contact Us" data-ar="تواصل معنا">Contact Us</span>
+          </a>
+          <a href={collectionHref} class="btn btn-ghost">
+            <span data-en={`Back to ${collectionLabel}`} data-ar={`العودة إلى ${arCollectionLabel}`}>Back to {collectionLabel}</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+.page-header {
+  padding: var(--space-7) 0 var(--space-6);
+  background: var(--color-bg);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-4);
+  flex-wrap: wrap;
+}
+.breadcrumb a { transition: color var(--transition-fast); }
+.breadcrumb a:hover { color: var(--color-gold-dark); }
+
+/* ── Product grid ───────────────────────────────────────── */
+.product-gallery { padding: var(--space-7) 0; background: var(--color-surface); }
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-4);
+}
+
+.product-card {
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+}
+
+.product-img {
+  position: relative;
+  aspect-ratio: 1;
+  overflow: hidden;
+}
+
+.product-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 600ms ease-out;
+}
+
+.product-card:hover .product-img img { transform: scale(1.05); }
+
+.product-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(28, 25, 23, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity var(--transition-base);
+}
+
+.product-card:hover .product-overlay { opacity: 1; }
+
+.product-overlay span {
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-white);
+  padding: 8px var(--space-3);
+  border: 1px solid rgba(255,255,255,0.5);
+  border-radius: var(--radius-sm);
+}
+
+/* ── Note ───────────────────────────────────────────────── */
+.gallery-note {
+  margin-top: var(--space-6);
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--color-border);
+}
+
+.gallery-note p {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  max-width: 560px;
+}
+
+.gallery-note a {
+  color: var(--color-gold-dark);
+  text-decoration: underline;
+  text-decoration-color: rgba(154,114,32,0.4);
+  transition: color var(--transition-fast);
+}
+.gallery-note a:hover { color: var(--color-gold); }
+
+/* ── CTA ────────────────────────────────────────────────── */
+.gallery-cta {
+  padding: var(--space-6) 0;
+  background: var(--color-surface-2);
+  border-top: 1px solid var(--color-border);
+}
+
+.gallery-cta-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-5);
+}
+
+.gallery-cta-inner h2 { font-size: clamp(1.3rem, 3vw, 1.8rem); margin-bottom: var(--space-2); }
+.gallery-cta-inner p { font-size: 0.9rem; color: var(--color-text-muted); max-width: none; }
+.gallery-cta-actions { display: flex; gap: var(--space-3); flex-wrap: wrap; }
+
+/* ── Responsive ─────────────────────────────────────────── */
+@media (max-width: 900px)  { .product-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 600px)  { .product-grid { grid-template-columns: repeat(2, 1fr); } .gallery-cta-inner { justify-content: flex-start; } }
+</style>
